@@ -1,19 +1,12 @@
 
 package com.gson.chao.t_gson.net;
 
-import java.util.List;
-
 import okhttp3.ResponseBody;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
-/**
- * Created by _SOLID
- * Date:2016/7/28
- * Time:9:22
- */
 public class ObservableProvider {
 
     private CommonService mCommonService;
@@ -39,6 +32,7 @@ public class ObservableProvider {
                 .map(new StringFunc());
     }
 
+    //这里加入返回泛型，为了方便向后传递
     public <T> Observable<HttpResult<T>> loadResult(String url, Class beanClass) {
         return loadString(url).map(new ResultFunc<T>(beanClass));
     }

@@ -1,16 +1,16 @@
 package com.gson.chao.t_gson;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.gson.chao.t_gson.net.HttpResultSubscriber;
 import com.gson.chao.t_gson.net.ObservableProvider;
+import com.gson.chao.t_gson.net.ParameterizedTypeImpl;
 import com.gson.chao.t_gson.net.ResultBean;
 
-import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.List;
 

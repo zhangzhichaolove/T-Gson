@@ -1,4 +1,4 @@
-package com.gson.chao.t_gson;
+package com.gson.chao.t_gson.net;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

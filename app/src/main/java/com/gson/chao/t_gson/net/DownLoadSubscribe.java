@@ -14,11 +14,6 @@ import java.io.OutputStream;
 import okhttp3.ResponseBody;
 import rx.Subscriber;
 
-/**
- * Created by _SOLID
- * Date:2016/8/1
- * Time:16:40
- */
 public abstract class DownLoadSubscribe extends Subscriber<ResponseBody> {
 
     private static String TAG = "DownLoadSubscribe";

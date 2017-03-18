@@ -5,9 +5,6 @@ import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.gson.chao.t_gson.Bean;
-import com.gson.chao.t_gson.ParameterizedTypeImpl;
-import com.gson.chao.t_gson.Result;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,12 +13,6 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
-/**
- * Created by _SOLID
- * Date:2016/7/22
- * Time:17:50
- * HttpResult<List<ResultBean>>
- */
 public class JsonConvert<T> extends AbsConvert<T> {
 
     private String mDataName = null;

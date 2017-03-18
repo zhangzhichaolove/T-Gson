@@ -1,28 +1,13 @@
 package com.gson.chao.t_gson.net;
 
-import android.text.TextUtils;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import com.google.gson.reflect.TypeToken;
-import com.gson.chao.t_gson.Bean;
-import com.gson.chao.t_gson.ParameterizedTypeImpl;
-import com.gson.chao.t_gson.Result;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
 import rx.functions.Func1;
 
-/**
- * Created by _SOLID
- * Date:2016/7/28
- * Time:11:04
- */
 public class ResultFunc<T> implements Func1<String, HttpResult<T>> {
     Class beanClass;
 
