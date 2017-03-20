@@ -13,7 +13,7 @@ public class RxUtils {
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(Observable<T> tObservable) {
-                return tObservable.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io());
+                return tObservable.observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io()).subscribeOn(Schedulers.io());
             }
         };
     }
@@ -22,7 +22,7 @@ public class RxUtils {
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(Observable<T> tObservable) {
-                return tObservable.observeOn(Schedulers.io()).subscribeOn(Schedulers.io());
+                return tObservable.observeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).subscribeOn(Schedulers.io());
             }
         };
     }

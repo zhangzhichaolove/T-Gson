@@ -13,6 +13,7 @@ import rx.Observable;
  * 服务器接口定义类
  */
 public interface ApiService {
+
     String BASE_URL = "http://www.gank.io/api/";//这个不重要，可以随便写，但是必须有
 
     @GET("data/Android/10/{page}")

@@ -6,10 +6,15 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.gson.chao.t_gson.net.ApiService;
+import com.gson.chao.t_gson.net.HttpResult;
 import com.gson.chao.t_gson.net.HttpResultSubscriber;
 import com.gson.chao.t_gson.net.ObservableProvider;
 import com.gson.chao.t_gson.net.ParameterizedTypeImpl;
 import com.gson.chao.t_gson.net.ResultBean;
+import com.gson.chao.t_gson.net.RetryWhenNetworkException;
+import com.gson.chao.t_gson.net.RxUtils;
+import com.gson.chao.t_gson.net.ServiceFactory;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -31,6 +36,26 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < listResult.data.size(); i++) {
             Log.e("TAG", listResult.data.get(i).getName());
         }
+        ServiceFactory.getInstance()
+                .createService(ApiService.class)
+                .getAndroidData(1)
+                //.observeOn(AndroidSchedulers.mainThread())
+                //.subscribeOn(Schedulers.io())
+                .compose(RxUtils.<HttpResult<List<ResultBean>>>defaultSchedulers())//调用默认调度器
+                .retryWhen(new RetryWhenNetworkException())//重试
+                .subscribe(new HttpResultSubscriber<List<ResultBean>>() {
+                    @Override
+                    public void onSuccess(List<ResultBean> resultsBeen) {
+                        for (int i = 0; i < resultsBeen.size(); i++) {
+                            System.out.println(resultsBeen.get(i).getDesc());
+                        }
+                    }
+
+                    @Override
+                    public void _onError(Throwable e) {
+                        System.out.println(e);
+                    }
+                });
         ObservableProvider.getDefault().<List<ResultBean>>loadResult("http://gank.io/api/data/Android/10/1", ResultBean.class).subscribe(new HttpResultSubscriber<List<ResultBean>>() {
             @Override
             public void onSuccess(List<ResultBean> resultBeen) {
@@ -50,6 +75,19 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("TAG", s);
             }
         });
+//        ApiExecutor instance = ApiExecutor.getInstance();
+//        Observable androidData = instance.getApiService().getAndroidData(1);
+//        instance.toSubscribe(androidData, new HttpResultSubscriber<List<ResultBean>>() {
+//
+//            @Override
+//            public void onSuccess(List<ResultBean> resultBeen) {
+//            }
+//
+//            @Override
+//            public void _onError(Throwable e) {
+//            }
+//
+//        });
     }
 
 
