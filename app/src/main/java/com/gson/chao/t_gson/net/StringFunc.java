@@ -5,6 +5,9 @@ import java.io.IOException;
 import okhttp3.ResponseBody;
 import rx.functions.Func1;
 
+/**
+ * RxJava-map转换类
+ */
 public class StringFunc implements Func1<ResponseBody, String> {
     @Override
     public String call(ResponseBody responseBody) {

@@ -8,6 +8,11 @@ import java.util.List;
 
 import rx.functions.Func1;
 
+/**
+ * RxJava-map转换实现类
+ *
+ * @param <T>
+ */
 public class ResultFunc<T> implements Func1<String, HttpResult<T>> {
     Class beanClass;
 

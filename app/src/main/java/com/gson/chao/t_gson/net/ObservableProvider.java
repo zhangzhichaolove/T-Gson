@@ -7,16 +7,19 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
+/**
+ * 被观察者提供类
+ */
 public class ObservableProvider {
 
-    private CommonService mCommonService;
+    private ApiService mApiService;
 
     private static class DefaultHolder {
         private static ObservableProvider INSTANCE = new ObservableProvider();
     }
 
     private ObservableProvider() {
-        mCommonService = ServiceFactory.getInstance().createService(CommonService.class);
+        mApiService = ServiceFactory.getInstance().createService(ApiService.class);
 
     }
 
@@ -25,7 +28,7 @@ public class ObservableProvider {
     }
 
     public Observable<String> loadString(String url) {
-        return mCommonService
+        return mApiService
                 .loadString(url)
                 .compose(RxUtils.<ResponseBody>defaultSchedulers())
                 .retryWhen(new RetryWhenNetworkException())
@@ -38,7 +41,7 @@ public class ObservableProvider {
     }
 
     public void download(String url, final DownLoadSubscribe subscribe) {
-        mCommonService
+        mApiService
                 .download(url)
                 .compose(RxUtils.<ResponseBody>all_io())
                 .doOnNext(new Action1<ResponseBody>() {

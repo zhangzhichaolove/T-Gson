@@ -4,6 +4,9 @@ import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+/**
+ * RxJava线程调度器
+ */
 public class RxUtils {
 
     public static <T> Observable.Transformer<T, T> defaultSchedulers() {

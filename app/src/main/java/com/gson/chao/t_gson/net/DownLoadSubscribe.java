@@ -14,6 +14,9 @@ import java.io.OutputStream;
 import okhttp3.ResponseBody;
 import rx.Subscriber;
 
+/**
+ * 下载订阅类
+ */
 public abstract class DownLoadSubscribe extends Subscriber<ResponseBody> {
 
     private static String TAG = "DownLoadSubscribe";

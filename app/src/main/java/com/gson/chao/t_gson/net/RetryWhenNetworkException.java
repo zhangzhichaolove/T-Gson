@@ -9,6 +9,9 @@ import rx.Observable;
 import rx.functions.Func1;
 import rx.functions.Func2;
 
+/**
+ * 网络异常重试类
+ */
 public class RetryWhenNetworkException implements Func1<Observable<? extends Throwable>, Observable<?>> {
     private int count = 3;//retry count
     private long delay = 3000;//delay time

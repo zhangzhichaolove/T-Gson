@@ -13,6 +13,11 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
+/**
+ * 数据类型转换实现类
+ *
+ * @param <T>
+ */
 public class JsonConvert<T> extends AbsConvert<T> {
 
     private String mDataName = null;

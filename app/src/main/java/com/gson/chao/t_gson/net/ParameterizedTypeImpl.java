@@ -3,6 +3,9 @@ package com.gson.chao.t_gson.net;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+/**
+ * Type辨别类
+ */
 public class ParameterizedTypeImpl implements ParameterizedType {
     private final Class raw;
     private final Type[] args;
